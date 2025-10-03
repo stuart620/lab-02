@@ -80,8 +80,9 @@ plastic_data_all %>% head(n = 10)
 
 ```{r Ex1, message = FALSE}
 plastic_data_all %>%
-  filter(!is.na(mismanaged_plastic_ocean)) %>%
-  count(mismanaged_plastic_ocean, name = "n_countries") %>%
+  filter(!is.na(region)) %>%
+  count(region, name = "n_countries") %>%
+  mutate(freq_percent = n_countries / sum(n_countries) * 100) %>%
   arrange(desc(n_countries))
 ```
 
