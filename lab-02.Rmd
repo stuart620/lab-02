@@ -79,10 +79,10 @@ plastic_data_all %>% head(n = 10)
 ### Ex 1.
 
 ```{r Ex1, message = FALSE}
-# Write your code here to answer exercise 1
-
-
-
+plastic_data_all %>%
+  filter(!is.na(mismanaged_plastic_ocean)) %>%
+  count(mismanaged_plastic_ocean, name = "n_countries") %>%
+  arrange(desc(n_countries))
 ```
 
 
