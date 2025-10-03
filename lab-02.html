@@ -387,11 +387,11 @@ plastic_data_all %&gt;% head(n = 10)</code></pre>
 <pre class="r"><code>#glimpse(plastic_data_all) checking it worked
 
 # Member 4 (pair 2) write code to load File 2 data here:
-
+data2 &lt;- read_csv2(&quot;data/per-capita-ocean-plastic-waste.txt&quot;)
 
 
 # Member 1 (pair 1) write code to load File 3 data here:
-
+data3 &lt;- read_tsv(&quot;data/UN_country_population.tsv&quot;)
 
 
 # Member 3 (pair 2) write code to load File 4 data here:</code></pre>
@@ -401,16 +401,23 @@ plastic_data_all %&gt;% head(n = 10)</code></pre>
 
 
 # Member 4 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
-
+plastic_data_all &lt;- data2 %&gt;%
+  select(-name) %&gt;%
+  left_join(plastic_data_all, by = &quot;code&quot;)
 
 
 
 # Member 1 (pair 1) write code to join your data to &#39;plastic_data_all&#39;:
+plastic_data_all &lt;- data3 %&gt;%
+  select(-name) %&gt;%
+  right_join(plastic_data_all, by = &quot;code&quot;)
 
 
-
-
-# Member 3 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:</code></pre>
+# Member 3 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
+data4 &lt;- read_excel(&quot;data/UN_country_region.xlsx&quot;)
+plastic_data_all &lt;- data4 %&gt;%
+  select(-name) %&gt;%
+  right_join(plastic_data_all, by = &quot;code&quot;)</code></pre>
 <pre class="r"><code># Member 2 (pair 1) adds code here to view the first 10 rows of &#39;plastic_data_all&#39;</code></pre>
 </div>
 <div id="exercises" class="section level2">
