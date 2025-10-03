@@ -387,7 +387,7 @@ plastic_data_all %&gt;% head(n = 10)</code></pre>
 <pre class="r"><code>#glimpse(plastic_data_all) checking it worked
 
 # Member 4 (pair 2) write code to load File 2 data here:
-
+data2 &lt;- read_csv2(&quot;data/per-capita-ocean-plastic-waste.txt&quot;)
 
 
 # Member 1 (pair 1) write code to load File 3 data here:
@@ -401,7 +401,9 @@ plastic_data_all %&gt;% head(n = 10)</code></pre>
 
 
 # Member 4 (pair 2) write code to join your data to &#39;plastic_data_all&#39;:
-
+plastic_data_all &lt;- data2 %&gt;%
+  select(-name) %&gt;%
+  left_join(plastic_data_all, by = &quot;code&quot;)
 
 
 
